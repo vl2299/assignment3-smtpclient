@@ -32,6 +32,7 @@ def smtp_client(port=1025, mailserver='127.0.0.1'):
     clientSocket.send(mailFromCommand.encode())
     recv2 = clientSocket.recv(1024).decode()
     # Fill in end
+    # print(recv2)
 
     # Send RCPT TO command and handle server response.
     # Fill in start
@@ -39,6 +40,7 @@ def smtp_client(port=1025, mailserver='127.0.0.1'):
     clientSocket.send(rcptToCommand.encode())
     recv3 = clientSocket.recv(1024).decode()
     # Fill in end
+    # print(recv3)
 
     # Send DATA command and handle server response.
     # Fill in start
@@ -46,18 +48,21 @@ def smtp_client(port=1025, mailserver='127.0.0.1'):
     clientSocket.send(dataCommand.encode())
     recv4 = clientSocket.recv(1024).decode()
     # Fill in end
+    # print(recv4)
 
     # Send message data.
     # Fill in start
-    message = "Subject: Test Mail\r\n\r\nThis is a test email.\r\m"
+    message = "Subject: Test Mail\r\n\r\nThis is a test email.\r\n"
     clientSocket.send(message.encode())
     # Fill in end
+    
 
     # Message ends with a single period, send message end and handle server response.
     # Fill in start
     clientSocket.send(endmsg.encode())
     recv5 = clientSocket.recv(1024).decode()
     # Fill in end
+    # print(recv5)
 
     # Send QUIT command and handle server response.
     # Fill in start
@@ -65,6 +70,7 @@ def smtp_client(port=1025, mailserver='127.0.0.1'):
     clientSocket.send(quitCommand.encode())
     recv6 = clientSocket.recv(1024).decode()
     # Fill in end
+    # print(recv6)
 
 
 if __name__ == '__main__':
